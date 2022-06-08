@@ -230,18 +230,7 @@ def main():
             chat_id, msg_id = map(int, f)
         bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
         osremove(".restartmsg")
-    elif OWNER_ID:
-        try:
-            kie = datetime.now(pytz.timezone(f'{TIMEZONE}'))
-            jam = kie.strftime('\n<b>📅 Date: %d/%m/%Y\n⏲️ Time: %I:%M%P</b>')
-            text = f"<b>Every Ends is A New Beginning\n\nBot Restarted ⚡️\n{jam}\n\n🗺️ TimeZone: {TIMEZONE}\n\nPlease Re-Download Your Torrents</b>"
-            bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
-            if AUTHORIZED_CHATS:
-                for i in AUTHORIZED_CHATS:
-                    bot.sendMessage(chat_id=i, text=text, parse_mode=ParseMode.HTML)
-        except Exception as e:
-            LOGGER.warning(e)
-
+    
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
                                   filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
