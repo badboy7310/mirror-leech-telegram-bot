@@ -240,7 +240,7 @@ def main():
                 for i in AUTHORIZED_CHATS:
                     bot.sendMessage(chat_id=i, text=text, parse_mode=ParseMode.HTML)
         except Exception as e:
-            LOGGER.warning(e
+            LOGGER.warning(e)
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
